@@ -55,7 +55,28 @@
 
         \item Un tel algorithme ne suffit pas à prouver qu'un problème n'est pas \algo{FPT}, pour cela, il faut prouver qu'il est \algo{W}\([1]\) difficile.
 
-        \item Si le nombre de fils à chaque nœud devient \(k+1\), le nombre de feuilles devient \(2^{k+1} = \BigO{2^k}\).
+        \item Si le nombre de fils à chaque nœud devient \(k+1\), le nombre de feuilles devient \(2^{k+1}\) qui est toujours \(\BigO{2^k}\).
         La procédure est donc toujours \algo{FPT}.
     \end{enumerate}
 \end{td-sol}
+
+\begin{td-exo}[Closest String]
+    On reprend les mots \(s_1,\ldots,s_r \in \Sigma^L\), le rayon \(d\) et le pseudo-code du cours.
+    La distance de Hamming \(d_H(x, y)\) est le nombre de positions où \(x\) et \(y\) diffèrent.
+    L'appel initial se fait avec \((z, l) =  (s_1, d)\).
+
+    \begin{enumerate}
+        \item Soit \(c\) une solution et \(s_i\) un mot avec \(d_H(z, s_i) > d\).
+        Dans un ensemble \(P\) de \(d+1\) positions de désaccord, montrer qu'il existe \(p \in P\) tel que \(c[p] = s_i[p] \neq z[p]\).
+        Pourquoi ne suffit-il pas de dire seulement que \(c\) et \(z\) diffèrent quelque part dans \(P\) ?
+
+        \item Montrer que, si \(d_H(z, c) \leq l\), au moins un appel enfant vérifie \(d_H(z^{(p)}, c) \leq l-1\).
+        Justifier l'invariant à la racine.
+
+        \item En déduire que l'algorithme trouve une solution si elle existe et n'en renvoie jamais une fausse.
+        Traiter le cas \(l = 0\).
+
+        \item Pour \(d\geq 1\), borner le nombre de nœuds et obtenir un temps \(\BigO{(d+1)^d r L}\).
+        Traiter séparément \(d = 0\).
+    \end{enumerate}
+\end{td-exo}

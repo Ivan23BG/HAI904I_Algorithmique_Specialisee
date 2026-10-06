@@ -76,13 +76,13 @@
 % ==========================================
 
 % --- Exercise & Solution Container Cards ---
-\newtcolorbox{td-exo}[1][]{
+\newtcolorbox[auto counter, number within=section]{td-exo}[1][]{
     enhanced, breakable,
     colback=boxbg, colframe=exocolor,
     coltitle=exocolor, coltext=textcolor,
     boxrule=0pt, leftrule=3.5pt, arc=0mm,
     top=8pt, bottom=8pt, left=12pt, right=12pt,
-    title={\bfseries Exercice : #1},
+    title={\bfseries Exercice~\thetcbcounter : #1},
     detach title, before upper={\tcbtitle\par\vspace{4pt}}
 }
 
