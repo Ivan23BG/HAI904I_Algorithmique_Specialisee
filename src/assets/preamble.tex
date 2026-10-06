@@ -187,3 +187,11 @@
 
 % Semantic command for algorithm names
 \newcommand{\algo}[1]{\ifmmode\mathsf{#1}\else\textsf{#1}\fi}
+\newcommand{\defemph}[1]{{\color{defcolor}#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+
+\usepackage{mathtools}
+\providecommand{\O}{} % Évite les conflits si \O existe déjà
+\renewcommand{\O}{\mathrm{O}}
+\DeclarePairedDelimiter{\parentheses}{(}{)}
+\newcommand{\BigO}[1]{\O\parentheses*{#1}}

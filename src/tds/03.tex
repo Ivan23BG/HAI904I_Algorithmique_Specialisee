@@ -1,0 +1,61 @@
+\section{TD3 --- Compression itérative}\label{sec:td3-compression}
+
+\begin{td-exo}[Profondeur bornée ne signifie pas \algo{FPT}]
+    Deux procédures ont une profondeur au plus \(k\).
+    La première crée au plus deux fils par nœud, la seconde au plus \(n\).
+    Le travail local coute \(n^2\).
+
+    \begin{enumerate}
+        \item Borner leurs temps de calcul et classer ces bornes comme \algo{FPT} ou \algo{XP}.
+
+        \item Pour une constante \(c\) fixée et \(k > c\), montrer qu'aucune constante \(f(k)\) ne majore \(n^{k-c}\) pour tous les entiers \(n\).
+
+        \item Un algorithme en temps \(n^k\) prouve-t-il que le problème n'est pas \algo{FPT} ?
+
+        \item Si le nombre de fils est \(k + 1\), la conclusion change-t-elle ?
+    \end{enumerate}
+\end{td-exo}
+
+\begin{td-sol}
+    On note \(p_1\) la procédure qui crée au plus deux fils par nœud et \(p_2\) celle qui en crée au plus \(n\).
+
+    \begin{enumerate}
+        \item Le nombre de feuilles pour \(p_1\) est au plus
+        \begin{equation*}
+            {b_1}^{d_1}
+        \end{equation*}
+        où \(b_1\) est le facteur de branchement et \(d_1\) la profondeur.
+
+        Ici, on a \(b_1 \leq 2\) et \(d_1 \leq k\) donc le nombre de feuilles \(f_1\) respecte 
+        \begin{equation*}
+            \begin{aligned}
+                f_1 
+                &\leq {b_1}^{d_1} \\
+                &\leq 2^k
+            \end{aligned}
+        \end{equation*}
+        Ainsi, le nombre de nœuds dans l'arbre de recherche pour la procédure \(p_1\) est au plus \(2f = 2^{k+1}\).
+        Le temps de calcul en chaque nœud étant exactement \(n^2\), la procédure \(p_1\) finit en temps au plus \(2^{k+1}\cdot n^2\).
+
+        En posant \(f(k) = 2^{k+1}\), on obtient que \(p_1\) termine en \(f(k) n^2\) donc la procédure \(p_1\) est \algo{FPT}.
+        
+        \vspace{\baselineskip}
+
+        On procède de même pour \(p_2\) :
+        \begin{equation*}
+            {b_2}^{d_2}
+        \end{equation*}
+        avec \(b_2 = n\) et \(d_2 = k\).
+
+        On a alors un temps de calcul en au plus \(2n^k \cdot n^2 = 2 n^{k+2}\). 
+        Le facteur \(k\) étant dans l'exposant de \(n\), la procédure \(p_2\) est \algo{XP}.
+
+        \item À \(k\) fixé, \(f(k)\) est une constante. Or \(n^{k-c}\) est une fonction avec \(\displaystyle\lim_{n\to\infty} n^{k-c} = +\infty\).
+        Donc aucune constante ne majore cette fonction pour tout \(n\).
+
+        \item Un tel algorithme ne suffit pas à prouver qu'un problème n'est pas \algo{FPT}, pour cela, il faut prouver qu'il est \algo{W}\([1]\) difficile.
+
+        \item Si le nombre de fils à chaque nœud devient \(k+1\), le nombre de feuilles devient \(2^{k+1} = \BigO{2^k}\).
+        La procédure est donc toujours \algo{FPT}.
+    \end{enumerate}
+\end{td-sol}
