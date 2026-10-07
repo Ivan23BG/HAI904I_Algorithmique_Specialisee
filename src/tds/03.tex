@@ -159,11 +159,11 @@
 
         \textbf{Analyse de complexité :}
         \begin{itemize}
-            \item Trouver un triangle orienté s'effectue en \(\BigO{(n^3)}\) en testant tous les triplets.
+            \item Trouver un triangle orienté s'effectue en \(\BigO{n^3}\) en testant tous les triplets.
             \item L'arbre de recherche possède un facteur de branchement au plus \(3\) et une profondeur maximale de \(k\) (puisque \(k\) décroît de 1 à chaque niveau).
             \item Le nombre de nœuds dans l'arbre de recherche est donc majoré par \(\mathcal{O}(3^k)\).
         \end{itemize}
-        La complexité globale est \(\mathcal{O}(3^k \cdot n^3)\), ce qui est bien un temps \algo{FPT} par rapport au paramètre \(k\).
+        La complexité globale est \(\BigO{3^k \cdot n^3}\), ce qui est bien un temps \algo{FPT} par rapport au paramètre \(k\).
     \end{enumerate}
 \end{td-sol}
 
